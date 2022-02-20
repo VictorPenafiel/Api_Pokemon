@@ -1,0 +1,1 @@
+validacion_pokemon = 'Pokemon no existe. Ingrese un nombre valido'
