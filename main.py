@@ -17,7 +17,7 @@ print(datos_base["id"])
 
 p_img = datos_base["sprites"]["front_default"]
 
-url2 =  f"https://pokeapi.co/docs/v2/pokemon-species/{nombre}"
+url2 =  f"https://pokeapi.co/api/v2/pokemon-species/{nombre}"
 
 datos_ps = get_info(url2)
 if datos_ps["evolves_from_species"] is None:
@@ -47,11 +47,12 @@ comentarios = datos_ps["flavor_text_entries"]
 comentarios_es = []
 
 for item in comentarios:
-    if item["langueage"]["name"] == "es":
+    if item["language"]["name"] == "es":
         comentarios_es.append(item["flavor_text"].replace("\n"," "))
 #print(comentarios_es)
 
 p_comentario = random.choice(comentarios_es)
+
 def genera_span(lista):
     diccionario_es = {
     "normal": "Normal", "fire": "Fuego", "flying": "Volador",
@@ -82,7 +83,7 @@ document_template_nuevo = document_template.substitute(
     p_at = p_at, p_de = p_de, p_ate = p_ate, p_dee = p_dee, p_ve = p_ve, p_tipos = p_tipos,
     p_comentario = p_comentario)
 
-with open('salida.html','w') as outfile:
+with open('output.html','w') as outfile:
     outfile.write(document_template_nuevo)
 
 
@@ -92,7 +93,7 @@ def procesa_tipos(lista_tipos,caracteristica):
         url3 = f" https://pokeapi.co/api/v2/type/{type}"
 
         datos_type = get_info(url3)
-        lista_sec = datos_type[" damage_relations"][caracteristica]
+        lista_sec = datos_type["damage_relations"][caracteristica]
 
         for item in lista_sec:
             tipos_total.append(item["name"])
