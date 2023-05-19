@@ -1,1 +1,1 @@
-validacion_pokemon = 'Pokemon no existe. Ingrese un nombre valido'
+validacion_pokemon = 'Lo siento, pero este no es un nombre válido. Por favor, ingrese un nombre válido.'
