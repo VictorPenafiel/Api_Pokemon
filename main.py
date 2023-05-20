@@ -6,18 +6,21 @@ import random
 
 #================================================================================================================
 # Validacion del nombre "de datos"
+
+
 nombre = input('Introduzca el nombre del Pokemon: ')
 nombre = validate(nombre)
 p_nombre = nombre.capitalize()
+print(p_nombre)
 
 url1 = f"https://pokeapi.co/api/v2/pokemon/{nombre}"
 
 datos_base = get_info(url1)
 p_id = datos_base["id"]
-print(p_nombre)
-print(datos_base["id"])
+
 
 p_img = datos_base["sprites"]["front_default"]#Obtener img atraves del nombre
+print(datos_base["id"])
 #==================================================================================================================
 
 # Obtener atributos del pokémon
@@ -58,21 +61,19 @@ for item in comentarios:
 p_comentario = random.choice(comentarios_es)
 
 #================================================================================================================================
-#Obtener tipo de efectividad
+""" #Obtener tipo de efectividad
 tipos_sec = get_info(url1)
 p_id = datos_base["id"]
 print(datos_base["id"])
 
-
-
-
-
-
 #================================================================================================
 
+#Obtener tipo de debilidad
+tipos_dc = get_info(url1)
+p_id = datos_base["id"]
+print(datos_base["id"])
 
-
-
+ """
 
 #============================================================================
 #Obtener lista de tipos
@@ -101,16 +102,15 @@ print(p_tipos)
 #Generar lista super efectivo contra
 tipos_sec = genera_spanol(procesa_tipos(tipos, "double_damage_to")) # 
 
-tipos_dc = procesa_tipos(tipos, "double_damage_from")
-print(tipos_dc)
+tipos_dc = genera_spanol(procesa_tipos(tipos, "double_damage_from"))
 
-tipos_imc = procesa_tipos(tipos, "no_damage_from")
-print(tipos_imc)
+tipos_rc = genera_spanol(procesa_tipos(tipos,"half_damage_from"))
 
-tipo_inc = procesa_tipos(tipos,"no_damage_to")
-print(tipo_inc)
+tipos_pec = genera_spanol(procesa_tipos(tipos,"half_damage_to"))
 
+tipos_imc = genera_spanol(procesa_tipos(tipos, "no_damage_from"))
 
+tipo_inc = genera_spanol(procesa_tipos(tipos,"no_damage_to"))
 
 
 
@@ -134,7 +134,8 @@ document_template = Template(entrada)
 document_template_nuevo = document_template.substitute(
     p_id = p_id, p_nombre = p_nombre, p_img= p_img, p_etapa = p_etapa,p_hp = p_hp, 
     p_at = p_at, p_de = p_de, p_ate = p_ate, p_dee = p_dee, p_ve = p_ve, p_tipos = p_tipos,
-    p_comentario = p_comentario, tipos_sec = tipos_sec)
+    p_comentario = p_comentario, tipos_sec = tipos_sec, tipos_dc = tipos_dc, tipos_imc = tipos_imc, tipos_inc = tipo_inc,
+    tipos_rc = tipos_rc, tipos_pec = tipos_pec)
 
 #Escribir resultado en un archivo html
 with open('output.html','w') as outfile:

@@ -11,7 +11,7 @@ def genera_spanol(lista):
     span_str = ""
     for item in lista:
         item_es = diccionario_es[item]
-        span_str = span_str + f'<span class="label{item}">{item_es}</span>'
+        span_str = span_str + f'<span class="label {item}">{item_es}</span>'
 
     return span_str
 

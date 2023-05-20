@@ -14,7 +14,7 @@ body {
   margin: auto;
 }
 .column2 {
-  width: 30%;
+  width: 40%;
   padding: 0 10px;
   margin: auto;
 }
@@ -79,6 +79,9 @@ body {
 .ground {background-color: #42340d;}
 .poison {background-color: #530ca3fd;}
 .flying {background-color: #5584c2;}
+.baby {background-color: hsl(165, 3%, 25%); color:rgb(247, 242, 242)}
+.legendary {background-color: hsl(165, 3%, 25%); color:rgb(247, 242, 242)}
+.mythical {background-color: hsl(165, 3%, 25%); color:rgb(247, 242, 242)}
 
 .container{
   text-align: left;
